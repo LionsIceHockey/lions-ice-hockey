@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Ice Hockey Club</title>
+<title>Birmingham Lions Ice Hockey Club</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -377,31 +377,20 @@
 <!-- HERO -->
 <section class="hero">
   <div class="ice-lines"></div>
-  <div class="hero-badge">⬡ Ice Hockey Club</div>
+  <div class="hero-badge">⬡ Birmingham Lions Ice Hockey Club</div>
 
   <!-- EDIT: Change the club name below -->
-  <h1>Our <span>Hockey</span><br>Club</h1>
+  <h1>Birmingham <span>Lions</span><br>Ice Hockey</h1>
 
   <!-- EDIT: Change the tagline below -->
-  <p class="hero-sub">Fast. Physical. Passionate. Join us on the ice — see what we're all about.</p>
+  <p class="hero-sub">Birmingham's home for ice hockey. Fast, physical, and passionate — see what we're all about.</p>
 
   <a href="#gallery" class="scroll-btn">
     <span class="puck-icon"></span>
     See the photos
   </a>
 
-  <div class="instructions">
-    <h3>📸 How to add your photos</h3>
-    <p style="margin-bottom:0.75rem">This page is ready to host. To add real photos, simply edit the HTML:</p>
-    <ol>
-      <li>Open <code>hockey-gallery.html</code> in any text editor (Notepad, VS Code, etc.)</li>
-      <li>Find the <code>PHOTOS</code> array near the top of the <code>&lt;script&gt;</code></li>
-      <li>Replace the placeholder entries with your image filenames and captions</li>
-      <li>Put your photo files in the same folder as the HTML file</li>
-      <li>Host the whole folder for free on <strong>GitHub Pages</strong> or <strong>Netlify Drop</strong></li>
-      <li>Generate a QR code pointing to your site URL at <strong>qr.io</strong> or <strong>goqr.me</strong></li>
-    </ol>
-  </div>
+
 </section>
 
 <!-- GALLERY -->
@@ -413,7 +402,7 @@
 
 <!-- Footer -->
 <footer>
-  <p>Ice Hockey Club &mdash; Proud to skate together</p>
+  <p>Birmingham Lions Ice Hockey Club &mdash; Proud to skate together</p>
 </footer>
 
 <!-- Upload button (helpful for local testing) -->
@@ -428,15 +417,19 @@
   // Format: { src: 'filename.jpg', caption: 'Caption text', wide: true/false }
   // ═══════════════════════════════════════════════
   const PHOTOS = [
-    // Replace these with your real photo filenames:
-    // { src: 'team-photo.jpg', caption: 'Team photo 2024', wide: true },
-    // { src: 'game1.jpg', caption: 'Match vs City FC' },
-    // { src: 'training.jpg', caption: 'Morning training session' },
+    { src: 'a8d92055-0918-48db-a13a-a8eba3a0be1f.jpeg', caption: '', wide: true },
+    { src: '717013a1-e0a1-4afe-84cd-2218af5c2073.jpeg', caption: '' },
+    { src: 'f005ee82-055d-46d4-aa52-6128f04b0a7c.jpeg', caption: '' },
+    { src: 'IMG_1320.jpeg', caption: '', wide: true },
+    { src: 'IMG_1303.jpeg', caption: '' },
+    { src: 'f26446e3-44fc-4e43-a462-82a6d4859f98.jpeg', caption: '' },
+    { src: 'IMG_1076.jpeg', caption: '' },
+    { src: 'IMG_1064.jpeg', caption: '' },
   ];
 
   // ═══════════════════════════════════════════════
   // CLUB NAME (shown in the footer & page title)
-  const CLUB_NAME = "Our Ice Hockey Club";
+  const CLUB_NAME = "Birmingham Lions Ice Hockey Club";
   // ═══════════════════════════════════════════════
 
   document.title = CLUB_NAME;
