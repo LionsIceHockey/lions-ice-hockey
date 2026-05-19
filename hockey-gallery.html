@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Ice Hockey Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ice: #e8f4fd;
+    --rink: #0a1628;
+    --blue: #1565c0;
+    --blue-bright: #1e88e5;
+    --silver: #b0bec5;
+    --white: #ffffff;
+    --red: #c62828;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--rink);
+    color: var(--white);
+    min-height: 100vh;
+  }
+
+  /* === HERO === */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(21,101,192,0.35) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(198,40,40,0.2) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .ice-lines {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,1) 60px, rgba(255,255,255,1) 61px);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--blue-bright);
+    border: 1px solid rgba(30,136,229,0.4);
+    padding: 0.35rem 1rem;
+    border-radius: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 12vw, 9rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    position: relative;
+    text-shadow: 0 0 80px rgba(21,101,192,0.5);
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 span {
+    color: var(--blue-bright);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--silver);
+    max-width: 420px;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .scroll-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--blue);
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 2rem;
+    border-radius: 3rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .scroll-btn:hover { background: var(--blue-bright); transform: translateY(-2px); }
+
+  .puck-icon {
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  /* === HOW TO ADD PHOTOS === */
+  .instructions {
+    background: rgba(21,101,192,0.12);
+    border: 1px solid rgba(21,101,192,0.25);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin: 3rem auto 0;
+    max-width: 700px;
+    text-align: left;
+  }
+
+  .instructions h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.05em;
+    color: var(--blue-bright);
+    margin-bottom: 0.75rem;
+  }
+
+  .instructions p, .instructions li {
+    font-size: 0.9rem;
+    color: var(--silver);
+    line-height: 1.7;
+  }
+
+  .instructions ol { padding-left: 1.25rem; }
+  .instructions li { margin-bottom: 0.35rem; }
+  .instructions code {
+    background: rgba(255,255,255,0.08);
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+    font-size: 0.85em;
+    color: #90caf9;
+  }
+
+  /* === GALLERY === */
+  #gallery {
+    padding: 4rem 1.5rem 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    letter-spacing: 0.05em;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title span { color: var(--blue-bright); }
+
+  .section-line {
+    width: 50px;
+    height: 3px;
+    background: var(--red);
+    margin: 0 auto 3rem;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  /* Each gallery item */
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    aspect-ratio: 4/3;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    cursor: pointer;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+
+  .gallery-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    z-index: 2;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.25s;
+  }
+
+  .gallery-item:hover img { filter: brightness(1.1); }
+
+  .gallery-item .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.6rem 0.9rem;
+    background: linear-gradient(transparent, rgba(10,22,40,0.85));
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.85);
+    transform: translateY(100%);
+    transition: transform 0.25s;
+  }
+
+  .gallery-item:hover .caption { transform: translateY(0); }
+
+  /* Placeholder cards (shown when no real photos yet) */
+  .placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.2);
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .placeholder svg {
+    width: 40px;
+    height: 40px;
+    opacity: 0.25;
+  }
+
+  /* Span some items for visual variety */
+  .gallery-item.wide { grid-column: span 2; }
+  .gallery-item.tall { grid-row: span 2; }
+
+  /* === LIGHTBOX === */
+  #lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  #lightbox.open { display: flex; }
+
+  #lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    border-radius: 6px;
+    object-fit: contain;
+    box-shadow: 0 0 60px rgba(0,0,0,0.7);
+  }
+
+  .lb-close {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: 1.5px solid rgba(255,255,255,0.4);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+
+  .lb-close:hover { background: rgba(255,255,255,0.15); }
+
+  .lb-prev, .lb-next {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    color: white;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+
+  .lb-prev { left: 1rem; }
+  .lb-next { right: 1rem; }
+  .lb-prev:hover, .lb-next:hover { background: rgba(255,255,255,0.15); }
+
+  /* === FOOTER === */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* === UPLOAD OVERLAY (for local editing) === */
+  .upload-bar {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(21,101,192,0.95);
+    color: white;
+    border: none;
+    border-radius: 3rem;
+    padding: 0.75rem 1.75rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: background 0.2s, transform 0.2s;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .upload-bar:hover { background: rgba(30,136,229,0.95); transform: translateX(-50%) translateY(-2px); }
+
+  @media (max-width: 600px) {
+    .gallery-item.wide { grid-column: span 1; }
+    .gallery-item.tall { grid-row: span 1; }
+    .instructions { padding: 1rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-close" onclick="closeLightbox()" aria-label="Close">✕</button>
+  <button class="lb-prev" onclick="lbNav(-1)" aria-label="Previous">&#8592;</button>
+  <img id="lb-img" src="" alt="">
+  <button class="lb-next" onclick="lbNav(1)" aria-label="Next">&#8594;</button>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="ice-lines"></div>
+  <div class="hero-badge">⬡ Ice Hockey Club</div>
+
+  <!-- EDIT: Change the club name below -->
+  <h1>Our <span>Hockey</span><br>Club</h1>
+
+  <!-- EDIT: Change the tagline below -->
+  <p class="hero-sub">Fast. Physical. Passionate. Join us on the ice — see what we're all about.</p>
+
+  <a href="#gallery" class="scroll-btn">
+    <span class="puck-icon"></span>
+    See the photos
+  </a>
+
+  <div class="instructions">
+    <h3>📸 How to add your photos</h3>
+    <p style="margin-bottom:0.75rem">This page is ready to host. To add real photos, simply edit the HTML:</p>
+    <ol>
+      <li>Open <code>hockey-gallery.html</code> in any text editor (Notepad, VS Code, etc.)</li>
+      <li>Find the <code>PHOTOS</code> array near the top of the <code>&lt;script&gt;</code></li>
+      <li>Replace the placeholder entries with your image filenames and captions</li>
+      <li>Put your photo files in the same folder as the HTML file</li>
+      <li>Host the whole folder for free on <strong>GitHub Pages</strong> or <strong>Netlify Drop</strong></li>
+      <li>Generate a QR code pointing to your site URL at <strong>qr.io</strong> or <strong>goqr.me</strong></li>
+    </ol>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <h2 class="section-title">Club <span>Photos</span></h2>
+  <div class="section-line"></div>
+  <div class="gallery-grid" id="grid"></div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>Ice Hockey Club &mdash; Proud to skate together</p>
+</footer>
+
+<!-- Upload button (helpful for local testing) -->
+<button class="upload-bar" onclick="document.getElementById('file-input').click()">
+  ⬆ Add your photos (local preview)
+</button>
+<input id="file-input" type="file" accept="image/*" multiple style="display:none" onchange="handleUpload(event)">
+
+<script>
+  // ═══════════════════════════════════════════════
+  // PHOTOS — Edit this array to add your own images
+  // Format: { src: 'filename.jpg', caption: 'Caption text', wide: true/false }
+  // ═══════════════════════════════════════════════
+  const PHOTOS = [
+    // Replace these with your real photo filenames:
+    // { src: 'team-photo.jpg', caption: 'Team photo 2024', wide: true },
+    // { src: 'game1.jpg', caption: 'Match vs City FC' },
+    // { src: 'training.jpg', caption: 'Morning training session' },
+  ];
+
+  // ═══════════════════════════════════════════════
+  // CLUB NAME (shown in the footer & page title)
+  const CLUB_NAME = "Our Ice Hockey Club";
+  // ═══════════════════════════════════════════════
+
+  document.title = CLUB_NAME;
+
+  const grid = document.getElementById('grid');
+  let lightboxIndex = 0;
+  let allItems = [];
+
+  function renderGallery(photos) {
+    grid.innerHTML = '';
+    allItems = [];
+
+    if (!photos.length) {
+      // Show placeholder grid
+      const placeholders = [
+        { label: 'Team photo', wide: true },
+        { label: 'Match day' },
+        { label: 'Training' },
+        { label: 'Goal celebration', wide: true },
+        { label: 'On the ice' },
+        { label: 'Away game' },
+        { label: 'Pre-match warmup' },
+      ];
+      placeholders.forEach((p, i) => {
+        const item = document.createElement('div');
+        item.className = 'gallery-item' + (p.wide ? ' wide' : '');
+        item.innerHTML = `
+          <div class="placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="5" width="18" height="14" rx="2"/>
+              <circle cx="8.5" cy="10.5" r="1.5"/>
+              <path d="M21 15l-5-5L5 19"/>
+            </svg>
+            <span>${p.label}</span>
+            <span style="font-size:0.7rem;opacity:0.6">Add photo here</span>
+          </div>`;
+        grid.appendChild(item);
+      });
+      return;
+    }
+
+    photos.forEach((photo, i) => {
+      const item = document.createElement('div');
+      item.className = 'gallery-item' + (photo.wide ? ' wide' : '') + (photo.tall ? ' tall' : '');
+      item.innerHTML = `
+        <img src="${photo.src}" alt="${photo.caption || ''}" loading="lazy">
+        ${photo.caption ? `<div class="caption">${photo.caption}</div>` : ''}
+      `;
+      item.addEventListener('click', () => openLightbox(i));
+      grid.appendChild(item);
+      allItems.push(photo.src);
+    });
+  }
+
+  // Lightbox
+  function openLightbox(index) {
+    if (!allItems.length) return;
+    lightboxIndex = index;
+    document.getElementById('lb-img').src = allItems[index];
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function lbNav(dir) {
+    lightboxIndex = (lightboxIndex + dir + allItems.length) % allItems.length;
+    document.getElementById('lb-img').src = allItems[lightboxIndex];
+  }
+
+  document.getElementById('lightbox').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('lightbox')) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') lbNav(-1);
+    if (e.key === 'ArrowRight') lbNav(1);
+  });
+
+  // Local file preview (for testing before hosting)
+  function handleUpload(event) {
+    const files = Array.from(event.target.files);
+    const previews = files.map(f => ({ src: URL.createObjectURL(f), caption: f.name.replace(/\.[^.]+$/, '') }));
+    renderGallery(previews);
+    document.querySelector('.instructions').style.display = 'none';
+  }
+
+  renderGallery(PHOTOS);
+</script>
+</body>
+</html>
