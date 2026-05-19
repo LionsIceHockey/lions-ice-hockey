@@ -405,11 +405,6 @@
   <p>Birmingham Lions Ice Hockey Club</p>
 </footer>
 
-<!-- Upload button (helpful for local testing) -->
-<button class="upload-bar" onclick="document.getElementById('file-input').click()">
-  ⬆ Add your photos (local preview)
-</button>
-<input id="file-input" type="file" accept="image/*" multiple style="display:none" onchange="handleUpload(event)">
 
 <script>
   // ═══════════════════════════════════════════════
@@ -514,13 +509,6 @@
     if (e.key === 'ArrowRight') lbNav(1);
   });
 
-  // Local file preview (for testing before hosting)
-  function handleUpload(event) {
-    const files = Array.from(event.target.files);
-    const previews = files.map(f => ({ src: URL.createObjectURL(f), caption: f.name.replace(/\.[^.]+$/, '') }));
-    renderGallery(previews);
-    document.querySelector('.instructions').style.display = 'none';
-  }
 
   renderGallery(PHOTOS);
 </script>
