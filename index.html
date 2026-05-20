@@ -10,6 +10,26 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+.buiha-link {
+  display: inline-block;
+  margin-top: -1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.buiha-link:hover {
+  color: rgba(255,255,255,0.85);
+  border-color: rgba(255,255,255,0.5);
+}
+ 
   :root {
     --navy:       #0b1527;
     --red:        #c0181e;
@@ -359,7 +379,9 @@
     <div class="hero-eyebrow">Birmingham &nbsp;&middot;&nbsp; Ice Hockey Club</div>
     <h1>Birmingham<br><span class="red">Lions</span></h1>
     <div class="hero-rule"></div>
-    <p class="hero-sub">Welcome to the Birmingham Lions! We are the home of Ice Hockey for Universities across Birmingham!</p>
+    <p class="hero-sub">Welcome to the Birmingham Lions! We are the home of Ice Hockey for Universities across Birmingham!</p><a href="https://buiha.org/club/birmingham" target="_blank" class="buiha-link">
+  View us on BUIHA &rarr;
+</a>
     <a href="#gallery" class="scroll-btn">
       <span class="puck"></span>
       View the gallery
